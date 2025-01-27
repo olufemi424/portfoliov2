@@ -68,7 +68,7 @@ const projects = [
       "GraphQL",
       "Redis",
     ],
-    liveUrl: "https://devops-dashboard.com",
+    liveUrl: "https://niniwise.com/quotes",
     githubUrl: "https://github.com/{}/devops-dashboard",
   },
 ];
