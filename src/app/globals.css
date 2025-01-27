@@ -3,25 +3,31 @@
 @tailwind utilities;
 
 @layer base {
-:root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --primary-blue: 210 96% 12%;
-    --accent-blue: 210 96% 20%;
-}
+  :root {
+    --background: rgb(2, 32, 60);
+    --background-dark: rgb(1, 15, 28);
+    --accent-blue: rgba(0, 108, 255, 0.2);
+    --accent-blue-hover: rgba(0, 108, 255, 0.3);
+    --text-primary: rgba(255, 255, 255, 0.9);
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --glass-bg: rgba(2, 32, 60, 0.5);
+    --glass-bg-hover: rgba(2, 32, 60, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-border-hover: rgba(255, 255, 255, 0.2);
+  }
 
-body {
-    background: rgb(2, 32, 60);
+  body {
+    background: var(--background);
     background-image:
       linear-gradient(122deg, rgba(245, 33, 33, 0) 82%, rgba(255, 255, 255, 0.08) 15%),
       linear-gradient(108deg, rgba(27, 0, 255, 0) 80%, rgba(255, 255, 255, 0.08) 15%),
       linear-gradient(101deg, rgba(255, 33, 33, 0) 79%, rgba(255, 255, 255, 0.08) 15%),
-      radial-gradient(circle, rgb(2, 32, 60) 0%, rgb(1, 15, 28) 100%);
+      radial-gradient(circle, var(--background) 0%, var(--background-dark) 100%);
   }
 }
 
 @layer components {
-  /* Portfolio Layout */
+  /* Layout */
   .portfolio {
     @apply scroll-smooth;
   }
@@ -34,11 +40,11 @@ body {
     @apply container mx-auto;
   }
 
-  /* Glass Card */
+  /* Glass Card Component */
   .glass-card {
     @apply relative overflow-hidden rounded-xl border backdrop-blur-md p-6;
-    background: rgba(2, 32, 60, 0.5);
-    border-color: rgba(255, 255, 255, 0.15);
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
   }
 
@@ -46,19 +52,12 @@ body {
     @apply transition-transform duration-300;
   }
 
-  .glass-card--static {
-    @apply transition-none;
+  .glass-card:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
   }
 
-  .glass-card__gradient {
-    background: radial-gradient(
-      800px circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 255, 255, 0.15),
-      transparent 40%
-    );
-  }
-
-  /* Ensure text within glass cards has good contrast */
   .glass-card h1,
   .glass-card h2,
   .glass-card h3 {
@@ -71,250 +70,7 @@ body {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   }
 
-  /* Add a subtle hover effect */
-  .glass-card:hover {
-    background: rgba(2, 32, 60, 0.6);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-  }
-
-  /* Hero Section */
-  .hero {
-    @apply relative;
-  }
-
-  .hero::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-b from-[rgb(1,15,28)]/60 to-transparent pointer-events-none;
-  }
-
-  .hero__profile-image {
-    @apply relative z-10;
-  }
-
-  .hero__profile-image::after {
-    content: '';
-    @apply absolute -inset-4 blur-xl rounded-full -z-10;
-    background: linear-gradient(
-      45deg,
-      rgba(2, 32, 60, 0.5),
-      rgba(0, 108, 255, 0.2)
-    );
-  }
-
-  .hero__profile-image-wrapper {
-    @apply relative transform transition-all duration-500;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  }
-
-  .hero__profile-image-wrapper:hover {
-    @apply scale-105;
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-  }
-
-  .hero__tab-btn {
-    @apply relative overflow-hidden;
-  }
-
-  .hero__tab-btn::after {
-    content: '';
-    @apply absolute inset-0 opacity-0 transition-opacity;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(0, 108, 255, 0.1),
-      transparent
-    );
-  }
-
-  .hero__tab-btn:hover::after {
-    @apply opacity-100;
-  }
-
-  /* Projects Section */
-  .projects {
-    @apply relative;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-      rgba(2, 32, 60, 0.8),
-      transparent
-    );
-  }
-
-  .projects__grid {
-    @apply grid gap-6 md:gap-8;
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  @media (min-width: 768px) {
-    .projects__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .projects__grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  .hero__project-item {
-    @apply relative overflow-hidden transition-all duration-500;
-    background: rgba(2, 32, 60, 0.4);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hero__project-item:hover {
-    @apply transform scale-[1.02];
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-  }
-
-  .hero__project-item::before {
-    content: '';
-    @apply absolute inset-0;
-    background: linear-gradient(
-      to bottom right,
-      rgba(255, 255, 255, 0.05),
-      transparent
-    );
-  }
-
-  .hero__project-image {
-    @apply relative h-40 sm:h-48 md:h-56 mb-6 rounded-lg overflow-hidden;
-  }
-
-  .hero__project-item img {
-    @apply transition-transform duration-500;
-  }
-
-  .hero__project-item:hover img {
-    @apply scale-110;
-  }
-
-  .hero__project-content {
-    @apply flex-1 flex flex-col;
-  }
-
-  .hero__project-title {
-    @apply text-lg sm:text-xl md:text-2xl font-semibold mb-2 md:mb-3 line-clamp-2;
-  }
-
-  .hero__project-description {
-    @apply text-sm sm:text-base text-white/80 mb-4 line-clamp-3;
-  }
-
-  .hero__project-tech {
-    @apply mt-auto pt-4 md:pt-6;
-  }
-
-  .hero__project-tech-list {
-    @apply flex flex-wrap gap-2 mb-4 md:mb-6;
-  }
-
-  .hero__project-tech-item {
-    @apply px-2 py-1 md:px-3 md:py-1 bg-[rgba(0,108,255,0.1)] rounded-full text-xs md:text-sm whitespace-nowrap;
-  }
-
-  .hero__project-links {
-    @apply flex gap-3 md:gap-4;
-  }
-
-  .hero__project-link {
-    @apply flex-1 text-center py-2 px-3 md:px-4 rounded-lg bg-[rgba(0,108,255,0.2)] hover:bg-[rgba(0,108,255,0.3)] transition-colors text-sm md:text-base;
-  }
-
-  /* Skills Items */
-  .hero__skill-item {
-    @apply relative overflow-hidden transition-all duration-500 flex flex-col items-center justify-center gap-2;
-    background: rgba(2, 32, 60, 0.4);
-    min-height: 100px;
-  }
-
-  .hero__skill-item::before {
-    content: '';
-    @apply absolute inset-0 opacity-25;
-    background: linear-gradient(135deg, var(--skill-gradient-from), var(--skill-gradient-to));
-  }
-
-  .hero__skill-item:hover {
-    @apply transform scale-105;
-    background: rgba(2, 32, 60, 0.6);
-  }
-
-  .hero__skill-item:hover::before {
-    @apply opacity-50;
-  }
-
-  .hero__skill-icon {
-    @apply text-2xl md:text-3xl mb-1;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-  }
-
-  .hero__skill-name {
-    @apply text-sm md:text-base font-medium text-white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Contact Form */
-  .hero__contact-input,
-  .hero__contact-textarea {
-    @apply bg-[rgb(2,32,60)]/20 backdrop-blur-md transition-all duration-300;
-  }
-
-  .hero__contact-input:focus,
-  .hero__contact-textarea:focus {
-    @apply bg-[rgb(2,32,60)]/40 border-[rgb(0,108,255)]/30;
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
-  }
-
-  .hero__contact-submit {
-    @apply relative overflow-hidden transition-all duration-300;
-    background: rgba(0, 108, 255, 0.2);
-  }
-
-  .hero__contact-submit:hover {
-    @apply transform scale-[1.02];
-    background: rgba(0, 108, 255, 0.3);
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
-  }
-
-  /* Background */
-  .gradient-background {
-    background: rgb(2, 32, 60);
-    background-image:
-      linear-gradient(122deg, rgba(245, 33, 33, 0) 82%, rgba(255, 255, 255, 0.08) 15%),
-      linear-gradient(108deg, rgba(27, 0, 255, 0) 80%, rgba(255, 255, 255, 0.08) 15%),
-      linear-gradient(101deg, rgba(255, 33, 33, 0) 79%, rgba(255, 255, 255, 0.08) 15%),
-      radial-gradient(circle, rgb(2, 32, 60) 0%, rgb(1, 15, 28) 100%);
-  }
-
-  /* Mobile Optimizations */
-  @media (max-width: 768px) {
-    .hero__profile {
-      @apply py-6;
-    }
-
-    .hero__profile-image {
-      @apply w-32 h-32;
-    }
-
-    .hero__tab-content {
-      @apply p-4;
-    }
-
-    .hero__project-item {
-      @apply p-4;
-    }
-
-    .hero__contact-form {
-      @apply space-y-3;
-    }
-  }
-
-  /* Mouse Tracking */
+  /* Mouse Tracking Effect */
   .mouse-tracking {
     @apply relative;
   }
@@ -322,7 +78,7 @@ body {
   .mouse-tracking__gradient {
     background: radial-gradient(
       circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(0, 108, 255, 0.15) 0%,
+      var(--accent-blue) 0%,
       rgba(0, 108, 255, 0.05) 25%,
       transparent 50%
     );
@@ -342,41 +98,156 @@ body {
     mix-blend-mode: overlay;
   }
 
+  /* Project Cards */
+  .hero__project-item {
+    @apply relative overflow-hidden transition-all duration-500 flex flex-col;
+    background: var(--glass-bg);
+    height: 100%;
+  }
+
+  .hero__project-item:hover {
+    @apply transform scale-[1.02];
+    background: var(--glass-bg-hover);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .hero__project-image {
+    @apply relative h-40 sm:h-48 md:h-56 mb-6 rounded-lg overflow-hidden;
+  }
+
+  .hero__project-item img {
+    @apply transition-transform duration-500;
+  }
+
+  .hero__project-item:hover img {
+    @apply scale-110;
+  }
+
+  .hero__project-content {
+    @apply flex-1 flex flex-col;
+  }
+
+  .hero__project-title {
+    @apply text-lg sm:text-xl md:text-2xl font-semibold mb-2 md:mb-3 line-clamp-2 text-[rgba(0,108,255,0.8)];
+  }
+
+  .hero__project-description {
+    @apply text-sm sm:text-base text-white/80 mb-4 line-clamp-3;
+  }
+
+  .hero__project-tech-list {
+    @apply flex flex-wrap gap-2 mb-4 md:mb-6;
+  }
+
+  .hero__project-tech-item {
+    @apply px-2 py-1 md:px-3 md:py-1 rounded-full text-xs md:text-sm whitespace-nowrap;
+    background: var(--accent-blue);
+  }
+
+  .hero__project-link {
+    @apply flex-1 text-center py-2 px-3 md:px-4 rounded-lg text-sm md:text-base transition-colors;
+    background: var(--accent-blue);
+  }
+
+  .hero__project-link:hover {
+    background: var(--accent-blue-hover);
+  }
+
+  /* Skill Items */
+  .hero__skill-item {
+    @apply relative overflow-hidden transition-all duration-500 flex flex-col items-center justify-center gap-2;
+    background: var(--glass-bg);
+    min-height: 100px;
+  }
+
+  .hero__skill-item::before {
+    content: '';
+    @apply absolute inset-0 opacity-25;
+    background: linear-gradient(135deg, var(--skill-gradient-from), var(--skill-gradient-to));
+  }
+
+  .hero__skill-item:hover {
+    @apply transform scale-105;
+    background: var(--glass-bg-hover);
+  }
+
+  .hero__skill-item:hover::before {
+    @apply opacity-50;
+  }
+
+  .hero__skill-icon {
+    @apply text-2xl md:text-3xl mb-1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  }
+
+  .hero__skill-name {
+    @apply text-sm md:text-base font-medium text-white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
   /* Contact Section */
   .hero__contact {
     @apply relative;
   }
 
   .hero__contact-content {
-    @apply relative bg-[rgba(2,32,60,0.3)] rounded-lg p-6 backdrop-blur-sm;
+    @apply relative rounded-lg p-6 backdrop-blur-sm;
+    background: var(--glass-bg);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
   }
 
-  .hero__contact-content::before {
-    content: '';
-    @apply absolute inset-0 rounded-lg opacity-20;
-    background: linear-gradient(135deg, rgba(0, 108, 255, 0.2), transparent);
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hero__profile {
+      @apply py-6;
+    }
+
+    .hero__profile-image {
+      @apply w-32 h-32;
+    }
+
+    .hero__tab-content {
+      @apply p-4;
+    }
+
+    .hero__project-item {
+      @apply p-4;
+    }
   }
 
-  .hero__contact-content:hover::before {
-    @apply opacity-30 transition-opacity duration-300;
+  /* Projects Grid */
+  .projects__grid {
+    @apply grid gap-6 md:gap-8;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    .projects__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .projects__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }
 
-/* Custom scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(2, 32, 60, 0.3);
+  background: var(--glass-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 108, 255, 0.2);
   @apply rounded;
+  background: var(--accent-blue);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 108, 255, 0.3);
+  background: var(--accent-blue-hover);
 }

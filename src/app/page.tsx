@@ -1,15 +1,17 @@
 import { HeroSection } from "@/components/sections/HeroSection";
-import Image from "next/image";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
 
 /**
- * Main page component featuring the enhanced hero section
+ * Home page component that serves as the main landing page
+ * Features a modern, interactive portfolio layout with:
+ * - Hero section with profile
+ * - Project showcase
+ * - Skills overview
+ * - Contact information
  */
 export default function Home() {
   return (
-    <div className="page">
+    <main className="portfolio__body">
       <HeroSection />
-        </div>
+    </main>
   );
 }
