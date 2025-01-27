@@ -4,20 +4,24 @@ import { motion } from "framer-motion";
 import { GlassCard } from "../ui/GlassCard";
 import Image from "next/image";
 import { useState } from "react";
-import profileImage from "@/assets/profileimage/profileImage.jpg";
-import Link from "next/link";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import niniwiseImage from "@/assets/project-img/niniwise-company.png";
-import aiContentImage from "@/assets/project-img/career-bridge-app.png";
-import devopsImage from "@/assets/project-img/moti-app.png";
 import { MdEmail } from "react-icons/md";
+import Link from "next/link";
+
+// Define image paths
+const IMAGES = {
+  profile: "/assets/profileimage/profileImage.jpg",
+  niniwise: "/assets/project-img/niniwise-company.png",
+  aiContent: "/assets/project-img/career-bridge-app.png",
+  devops: "/assets/project-img/moti-app.png",
+};
 
 const projects = [
   {
     title: "Niniwise - Product Hub",
     description:
       "An innovative technology company pioneering solutions across AI, blockchain, and IoT. Their flagship product suite includes smart city infrastructure management, advanced supply chain optimization tools, and enterprise-grade security systems. Known for leveraging cutting-edge tech to tackle complex real-world challenges with measurable impact.",
-    image: niniwiseImage,
+    image: IMAGES.niniwise,
     technologies: [
       "Vue.js",
       "Node.js",
@@ -33,7 +37,7 @@ const projects = [
     title: "Career Bridge",
     description:
       "A platform that helps job seekers find their dream jobs and employers find the right talent. It provides a comprehensive suite of tools for job seekers, including resume builder, job search, and interview preparation.",
-    image: aiContentImage,
+    image: IMAGES.aiContent,
     technologies: [
       "React",
       "TypeScript",
@@ -49,7 +53,7 @@ const projects = [
     title: "DevOps Dashboard",
     description:
       "A centralized dashboard for DevOps teams to monitor infrastructure, track deployments, and manage cloud resources across multiple providers. Features real-time alerts and automated incident response.",
-    image: devopsImage,
+    image: IMAGES.devops,
     technologies: [
       "Next.js",
       "AWS",
@@ -127,7 +131,7 @@ export const HeroSection = () => {
                 <div className="hero__profile-image">
                   <div className="hero__profile-image-wrapper">
                     <Image
-                      src={profileImage}
+                      src={IMAGES.profile}
                       alt="Profile"
                       priority
                       width={192}
