@@ -56,9 +56,9 @@ const projects = [
     githubUrl: "https://github.com/{}/career-bridge",
   },
   {
-    title: "DevOps Dashboard",
+    title: "Moti App",
     description:
-      "A centralized dashboard for DevOps teams to monitor infrastructure, track deployments, and manage cloud resources across multiple providers. Features real-time alerts and automated incident response.",
+      "This app takes input from the user and generate a quote based on the input, the quote is generated using the OpenAI API, the model used is gpt-3.5-turbo, the app is built with Next.js and Tailwind CSS",
     image: IMAGES.devops,
     technologies: [
       "Next.js",
