@@ -4,7 +4,13 @@ import { motion } from "framer-motion";
 import { GlassCard } from "../ui/GlassCard";
 import Image from "next/image";
 import { useState } from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaExternalLinkAlt,
+  FaGlobe,
+} from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Link from "next/link";
 
@@ -215,9 +221,6 @@ export const HeroSection = () => {
                   >
                     {activeTab === "about" && (
                       <div className="hero__about h-full flex flex-col space-y-4">
-                        <h2 className="hero__about-title text-xl md:text-2xl font-semibold mb-4 text-[rgba(0,108,255,0.8)]">
-                          About Me
-                        </h2>
                         <p className="hero__about-text text-white/80 text-base md:text-lg leading-relaxed">
                           I&apos;m a tech enthusiast who finds endless wonder in
                           the possibilities of computing. Each day, I&apos;m
@@ -264,9 +267,6 @@ export const HeroSection = () => {
 
                     {activeTab === "contact" && (
                       <div className="hero__contact h-full flex flex-col">
-                        <h2 className="hero__contact-title text-xl md:text-2xl font-semibold mb-4 text-[rgba(0,108,255,0.8)]">
-                          Get in Touch
-                        </h2>
                         <div className="hero__contact-content flex flex-col items-center justify-center flex-1">
                           <div className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
                             <MdEmail className="text-2xl md:text-3xl" />
@@ -315,16 +315,21 @@ export const HeroSection = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-[rgb(2,32,60)]/90 to-transparent" />
                   </div>
                   <div className="hero__project-content">
-                    <h3 className="hero__project-title text-[rgba(0,108,255,0.8)]">
-                      {project.title}
-                    </h3>
+                    <h3 className="hero__project-title">{project.title}</h3>
                     <p className="hero__project-description">
                       {project.description}
                     </p>
                     <div className="hero__project-tech">
-                      <div className="hero__project-tech-list">
+                      <div
+                        className="hero__project-tech-list"
+                        aria-label="Technologies used"
+                      >
                         {project.technologies.map((tech) => (
-                          <span key={tech} className="hero__project-tech-item">
+                          <span
+                            key={tech}
+                            className="hero__project-tech-item"
+                            title={tech}
+                          >
                             {tech}
                           </span>
                         ))}
@@ -333,16 +338,24 @@ export const HeroSection = () => {
                         <Link
                           href={project.liveUrl}
                           target="_blank"
+                          rel="noopener noreferrer"
                           className="hero__project-link"
+                          aria-label={`View live demo of ${project.title}`}
                         >
-                          Live Preview
+                          <FaGlobe className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <span>View Live Demo</span>
+                          <FaExternalLinkAlt className="w-3 h-3 sm:w-4 sm:h-4 opacity-70" />
                         </Link>
                         {/* <Link
                           href={project.githubUrl}
                           target="_blank"
+                          rel="noopener noreferrer"
                           className="hero__project-link"
+                          aria-label={`View source code of ${project.title} on GitHub`}
                         >
-                          View Code
+                          <FaGithub className="w-4 h-4 sm:w-5 sm:h-5" />
+                          <span>Source Code</span>
+                          <FaExternalLinkAlt className="w-3 h-3 sm:w-4 sm:h-4 opacity-70" />
                         </Link> */}
                       </div>
                     </div>

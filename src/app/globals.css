@@ -201,7 +201,7 @@ body {
   }
 
   .hero__project-image {
-    @apply relative h-40 sm:h-48 md:h-56 mb-6 rounded-lg overflow-hidden;
+    @apply relative h-40 sm:h-48 md:h-56 mb-4 sm:mb-6 rounded-lg overflow-hidden;
   }
 
   .hero__project-item img {
@@ -213,33 +213,91 @@ body {
   }
 
   .hero__project-content {
-    @apply flex-1 flex flex-col;
+    @apply flex-1 flex flex-col p-4 sm:p-6;
   }
 
   .hero__project-title {
-    @apply text-lg sm:text-xl md:text-2xl font-semibold mb-2 md:mb-3 line-clamp-2 text-[rgba(0,108,255,0.8)];
+    @apply text-lg sm:text-xl md:text-2xl font-semibold mb-2 md:mb-3 line-clamp-2;
+    color: rgba(0, 108, 255, 0.8);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .hero__project-description {
-    @apply text-sm sm:text-base text-white/80 mb-4 line-clamp-3;
+    @apply text-sm sm:text-base text-white/80 mb-4 line-clamp-3 leading-relaxed;
+  }
+
+  .hero__project-tech {
+    @apply mt-auto flex flex-col gap-4;
   }
 
   .hero__project-tech-list {
-    @apply flex flex-wrap gap-2 mb-4 md:mb-6;
+    @apply flex flex-wrap gap-2;
   }
 
   .hero__project-tech-item {
-    @apply px-2 py-1 md:px-3 md:py-1 rounded-full text-xs md:text-sm whitespace-nowrap;
+    @apply px-2 py-1 text-xs sm:text-sm rounded-full whitespace-nowrap transition-all duration-300;
     background: var(--accent-blue);
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .hero__project-tech-item:hover {
+    background: var(--accent-blue-hover);
+    transform: translateY(-1px);
+  }
+
+  /* Project Links */
+  .hero__project-links {
+    @apply flex flex-wrap gap-3 mt-4;
   }
 
   .hero__project-link {
-    @apply flex-1 text-center py-2 px-3 md:px-4 rounded-lg text-sm md:text-base transition-colors;
-    background: var(--accent-blue);
+    @apply flex-1 text-center py-2.5 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium
+      transition-all duration-300 flex items-center justify-center gap-2;
+    background: linear-gradient(135deg, rgba(0, 108, 255, 0.3), rgba(0, 108, 255, 0.2));
+    color: var(--text-primary);
+    min-width: 140px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 108, 255, 0.2);
+    backdrop-filter: blur(4px);
   }
 
   .hero__project-link:hover {
-    background: var(--accent-blue-hover);
+    background: linear-gradient(135deg, rgba(0, 108, 255, 0.4), rgba(0, 108, 255, 0.3));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 108, 255, 0.2);
+    border-color: rgba(0, 108, 255, 0.3);
+  }
+
+  .hero__project-link:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 108, 255, 0.1);
+  }
+
+  @media (max-width: 640px) {
+    .hero__project-content {
+      @apply p-3;
+    }
+
+    .hero__project-tech {
+      @apply gap-3;
+    }
+
+    .hero__project-tech-list {
+      @apply gap-1.5;
+    }
+
+    .hero__project-tech-item {
+      @apply px-1.5 py-0.5 text-xs;
+    }
+
+    .hero__project-links {
+      @apply gap-2 mt-3;
+    }
+
+    .hero__project-link {
+      @apply py-2 px-3 text-xs min-w-[120px];
+    }
   }
 
   /* Skill Items */
