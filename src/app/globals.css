@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+:root {
     --background: rgb(2, 32, 60);
     --background-dark: rgb(1, 15, 28);
     --accent-blue: rgba(0, 108, 255, 0.2);
@@ -14,9 +14,9 @@
     --glass-bg-hover: rgba(2, 32, 60, 0.6);
     --glass-border: rgba(255, 255, 255, 0.15);
     --glass-border-hover: rgba(255, 255, 255, 0.2);
-  }
+}
 
-  body {
+body {
     background: var(--background);
     background-image:
       linear-gradient(122deg, rgba(245, 33, 33, 0) 82%, rgba(255, 255, 255, 0.08) 15%),
@@ -38,6 +38,95 @@
 
   .portfolio__main {
     @apply container mx-auto;
+  }
+
+  /* Hero Profile */
+  .hero__profile {
+    @apply flex flex-col justify-center text-center lg:text-left py-8 md:py-12;
+    background: linear-gradient(180deg, var(--glass-bg) 0%, transparent 100%);
+    border-radius: 24px;
+  }
+
+  .hero__profile-image {
+    @apply relative w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-48 lg:h-48 mx-auto lg:mx-0 mb-6 transition-transform duration-500;
+  }
+
+  .hero__profile-image:hover {
+    @apply transform scale-105;
+  }
+
+  .hero__profile-image-wrapper {
+    @apply rounded-full overflow-hidden border-4 transition-all duration-500;
+    border-color: var(--accent-blue);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .hero__profile-image-wrapper:hover {
+    border-color: rgba(0, 108, 255, 0.4);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  .hero__profile-img {
+    @apply object-cover transition-transform duration-500;
+  }
+
+  .hero__profile-img:hover {
+    @apply scale-110;
+  }
+
+  .hero__profile-status {
+    @apply absolute bottom-2 right-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 transition-transform duration-300;
+    background: rgb(0, 108, 255);
+    border-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .hero__profile-status:hover {
+    @apply transform scale-110;
+  }
+
+  .hero__title {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-4;
+    background: linear-gradient(135deg, white 0%, rgba(0, 108, 255, 0.8) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .hero__subtitle {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl mb-4 sm:mb-6 md:mb-8;
+    color: rgba(0, 108, 255, 0.8);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .hero__social-links {
+    @apply flex justify-center lg:justify-start gap-4 sm:gap-6;
+  }
+
+  .hero__social-links a {
+    @apply text-white/60 hover:text-[rgb(0,108,255)] transition-all duration-300 p-2 rounded-full;
+  }
+
+  .hero__social-links a:hover {
+    @apply transform scale-110 bg-white/5;
+  }
+
+  @media (max-width: 640px) {
+    .hero__profile {
+      @apply py-6;
+    }
+
+    .hero__title {
+      @apply text-2xl mb-2;
+    }
+
+    .hero__subtitle {
+      @apply text-base mb-4;
+    }
+
+    .hero__social-links {
+      @apply gap-3;
+    }
   }
 
   /* Glass Card Component */

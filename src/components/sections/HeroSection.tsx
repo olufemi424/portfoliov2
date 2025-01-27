@@ -113,62 +113,67 @@ export const HeroSection = () => {
 
   return (
     <>
-      <section className="hero py-8 md:py-16">
-        <div className="hero__container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="hero__content grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+      <section className="hero pt-4 pb-12 sm:py-4 md:py-8">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="hero__content grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
             {/* Left Column - Profile */}
-            <div className="hero__profile flex flex-col justify-center text-center lg:text-left">
+            <div className="hero__profile p-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="flex flex-col items-center lg:items-start"
               >
-                <div className="hero__profile-image relative w-40 h-40 md:w-48 md:h-48 mb-6">
-                  <div className="hero__profile-image-wrapper rounded-full overflow-hidden border-4 border-[rgba(0,108,255,0.2)] shadow-xl">
+                <div className="hero__profile-image">
+                  <div className="hero__profile-image-wrapper">
                     <Image
                       src={profileImage}
                       alt="Profile"
                       priority
                       width={192}
                       height={192}
-                      className="hero__profile-img object-cover"
+                      className="hero__profile-img"
                     />
                   </div>
-                  <div className="hero__profile-status absolute bottom-2 right-2 w-4 h-4 bg-[rgb(0,108,255)] rounded-full border-2 border-white shadow-lg" />
+                  <div
+                    className="hero__profile-status"
+                    title="Available for opportunities"
+                  />
                 </div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-center lg:text-left"
                 >
-                  <h1 className="hero__title text-3xl md:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-[rgba(0,108,255,0.8)]">
-                    Olufemi Afolabi
-                  </h1>
-                  <p className="hero__subtitle text-lg md:text-2xl text-[rgba(0,108,255,0.8)] mb-8">
+                  <h1 className="hero__title">Olufemi Afolabi</h1>
+                  <p className="hero__subtitle">
                     Software Engineer & Solutions Architect
                   </p>
-                  <div className="hero__social-links flex justify-center lg:justify-start gap-6 mb-8 lg:mb-0">
+                  <div className="hero__social-links">
                     <Link
-                      href="https://github.com/yourusername"
+                      href="https://github.com/olufemi424"
                       target="_blank"
-                      className="text-white/60 hover:text-[rgb(0,108,255)] transition-colors"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub Profile"
                     >
-                      <FaGithub size={24} />
+                      <FaGithub className="w-5 h-5 sm:w-6 sm:h-6" />
                     </Link>
                     <Link
-                      href="https://linkedin.com/in/yourusername"
+                      href="https://linkedin.com/in/olufemiafolabi91"
                       target="_blank"
-                      className="text-white/60 hover:text-[rgb(0,108,255)] transition-colors"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn Profile"
                     >
-                      <FaLinkedin size={24} />
+                      <FaLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
                     </Link>
                     <Link
-                      href="https://twitter.com/yourusername"
+                      href="https://twitter.com/afofm"
                       target="_blank"
-                      className="text-white/60 hover:text-[rgb(0,108,255)] transition-colors"
+                      rel="noopener noreferrer"
+                      aria-label="Twitter Profile"
                     >
-                      <FaTwitter size={24} />
+                      <FaTwitter className="w-5 h-5 sm:w-6 sm:h-6" />
                     </Link>
                   </div>
                 </motion.div>
@@ -284,16 +289,8 @@ export const HeroSection = () => {
       </section>
 
       {/* Projects Section */}
-      <section className="projects py-12 sm:py-16 md:py-24">
+      <section className="projects pt-4 pb-12 sm:py-4 md:py-8">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-[rgba(0,108,255,0.8)]"
-          >
-            Featured Projects
-          </motion.h2>
           <div className="projects__grid">
             {projects.map((project, index) => (
               <motion.div
