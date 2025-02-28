@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import MouseTrackingProvider from "@/components/MouseTrackingProvider";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="portfolio scroll-smooth">
+      <Head>
+        <title>Olufemi Afolabi</title>
+        <meta property="og:title" content="Portfolio" key="Portfolio" />
+        <meta
+          property="og:description"
+          content="Software Engineer & Solutions Architect Portfolio"
+        />
+        <meta property="og:image" content="/preview-image.png" />
+        <meta property="og:url" content="https://olufemiaf.info" />
+        {/* <meta name="twitter:card" content="summary_large_image" /> */}
+      </Head>
       <body className={`${inter.className} gradient-background`}>
         <MouseTrackingProvider>
           <main className="portfolio__main">{children}</main>
