@@ -293,7 +293,7 @@ export const HeroSection = () => {
       </section>
 
       {/* Projects Section */}
-      <section className="projects pt-4 pb-12 sm:py-4 md:py-8">
+      <section className="projects pb-12 sm:py-4 md:py-8">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="projects__grid">
             {projects.map((project, index) => (
