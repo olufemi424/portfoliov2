@@ -52,7 +52,8 @@ const projects = [
       "OpenAI",
       "PostgreSQL",
     ],
-    liveUrl: "https://niniwise.com/career-bridge",
+    liveUrl:
+      "https://streaming-structured-output-nine.vercel.app/career-bridge",
     githubUrl: "https://github.com/{}/career-bridge",
   },
   {
