@@ -36,7 +36,7 @@ const projects = [
       "WebSocket",
       "TradingView API",
     ],
-    liveUrl: "https://niniwise.com",
+    liveUrl: "https://streaming-structured-output-nine.vercel.app/",
     githubUrl: "https://github.com/{}/niniwise",
   },
   {
@@ -68,7 +68,7 @@ const projects = [
       "GraphQL",
       "Redis",
     ],
-    liveUrl: "https://niniwise.com/quotes",
+    liveUrl: "https://moti.niniwise.com",
     githubUrl: "https://github.com/{}/devops-dashboard",
   },
 ];
