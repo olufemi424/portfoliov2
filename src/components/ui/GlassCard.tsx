@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 
@@ -22,21 +21,11 @@ export const GlassCard = ({
   animate = true,
 }: GlassCardProps) => {
   const baseClasses =
-    "glass-card relative overflow-hidden rounded-xl bg-glass border border-glass-border backdrop-blur-sm p-6";
+    "glass-card relative overflow-hidden rounded-xl bg-glass border border-glass-border p-6 transition-transform duration-300";
 
-  return animate ? (
-    <motion.div
-      className={cn(baseClasses, "glass-card--animated", className)}
-      whileHover={{ scale: 1.02 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    >
+  return (
+    <div className={cn(baseClasses, animate && "hover:scale-[1.01]", className)}>
       {children}
-      <div className="glass-card__gradient glass-card__gradient--animated absolute inset-0 opacity-20 pointer-events-none" />
-    </motion.div>
-  ) : (
-    <div className={cn(baseClasses, "glass-card--static", className)}>
-      {children}
-      <div className="glass-card__gradient glass-card__gradient--static absolute inset-0 opacity-20 pointer-events-none" />
     </div>
   );
 };

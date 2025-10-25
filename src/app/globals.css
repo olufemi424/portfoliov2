@@ -4,16 +4,16 @@
 
 @layer base {
 :root {
-    --background: rgb(2, 32, 60);
-    --background-dark: rgb(1, 15, 28);
-    --accent-blue: rgba(0, 108, 255, 0.2);
-    --accent-blue-hover: rgba(0, 108, 255, 0.3);
-    --text-primary: rgba(255, 255, 255, 0.9);
-    --text-secondary: rgba(255, 255, 255, 0.8);
-    --glass-bg: rgba(2, 32, 60, 0.5);
-    --glass-bg-hover: rgba(2, 32, 60, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.15);
-    --glass-border-hover: rgba(255, 255, 255, 0.2);
+    --background: rgb(255, 255, 255);
+    --background-dark: rgb(245, 245, 245);
+    --accent-light: rgba(0, 0, 0, 0.1);
+    --accent-hover: rgba(0, 0, 0, 0.15);
+    --text-primary: rgba(0, 0, 0, 0.95);
+    --text-secondary: rgba(0, 0, 0, 0.7);
+    --glass-bg: rgba(240, 240, 240, 0.8);
+    --glass-bg-hover: rgba(230, 230, 230, 0.9);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --glass-border-hover: rgba(0, 0, 0, 0.2);
 }
 
 html {
@@ -29,11 +29,6 @@ html {
 
 body {
     background: var(--background);
-    background-image:
-      linear-gradient(122deg, rgba(245, 33, 33, 0) 82%, rgba(255, 255, 255, 0.08) 15%),
-      linear-gradient(108deg, rgba(27, 0, 255, 0) 80%, rgba(255, 255, 255, 0.08) 15%),
-      linear-gradient(101deg, rgba(255, 33, 33, 0) 79%, rgba(255, 255, 255, 0.08) 15%),
-      radial-gradient(circle, var(--background) 0%, var(--background-dark) 100%);
   }
 }
 
@@ -44,7 +39,7 @@ body {
   }
 
   .portfolio__body {
-    @apply min-h-screen text-white;
+    @apply min-h-screen text-black;
 
     display: flex;
     flex-direction: column;
@@ -59,7 +54,7 @@ body {
   /* Hero Profile */
   .hero__profile {
     @apply flex flex-col justify-center text-center lg:text-left py-8 md:py-12;
-    background: linear-gradient(180deg, var(--glass-bg) 0%, transparent 100%);
+    background: transparent;
     border-radius: 24px;
   }
 
@@ -73,13 +68,13 @@ body {
 
   .hero__profile-image-wrapper {
     @apply rounded-full overflow-hidden border-4 transition-all duration-500;
-    border-color: var(--accent-blue);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
   }
 
   .hero__profile-image-wrapper:hover {
-    border-color: rgba(0, 108, 255, 0.4);
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+    border-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08);
   }
 
   .hero__profile-img {
@@ -92,9 +87,9 @@ body {
 
   .hero__profile-status {
     @apply absolute bottom-2 right-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 transition-transform duration-300;
-    background: rgb(0, 108, 255);
+    background: rgb(0, 0, 0);
     border-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
   .hero__profile-status:hover {
@@ -103,16 +98,14 @@ body {
 
   .hero__title {
     @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-2 sm:mb-3 md:mb-4;
-    background: linear-gradient(135deg, white 0%, rgba(0, 108, 255, 0.8) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: black;
+    text-shadow: none;
   }
 
   .hero__subtitle {
     @apply text-base sm:text-lg md:text-xl lg:text-2xl mb-4 sm:mb-6 md:mb-8;
-    color: rgba(0, 108, 255, 0.8);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.7);
+    text-shadow: none;
   }
 
   .hero__social-links {
@@ -120,11 +113,11 @@ body {
   }
 
   .hero__social-links a {
-    @apply text-white/60 hover:text-[rgb(0,108,255)] transition-all duration-300 p-2 rounded-full;
+    @apply text-black/60 hover:text-black transition-all duration-300 p-2 rounded-full;
   }
 
   .hero__social-links a:hover {
-    @apply transform scale-110 bg-white/5;
+    @apply transform scale-110 bg-black/5;
   }
 
   @media (max-width: 640px) {
@@ -147,10 +140,10 @@ body {
 
   /* Glass Card Component */
   .glass-card {
-    @apply relative overflow-hidden rounded-xl border backdrop-blur-md p-6;
+    @apply relative overflow-hidden rounded-xl border p-6;
     background: var(--glass-bg);
     border-color: var(--glass-border);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
   }
 
   .glass-card--animated {
@@ -160,48 +153,21 @@ body {
   .glass-card:hover {
     background: var(--glass-bg-hover);
     border-color: var(--glass-border-hover);
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
   }
 
   .glass-card h1,
   .glass-card h2,
   .glass-card h3 {
-    @apply text-white font-semibold;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    @apply text-black font-semibold;
+    text-shadow: none;
   }
 
   .glass-card p {
-    @apply text-white/90;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    @apply text-black/90;
+    text-shadow: none;
   }
 
-  /* Mouse Tracking Effect */
-  .mouse-tracking {
-    @apply relative;
-  }
-
-  .mouse-tracking__gradient {
-    background: radial-gradient(
-      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      var(--accent-blue) 0%,
-      rgba(0, 108, 255, 0.05) 25%,
-      transparent 50%
-    );
-    mix-blend-mode: screen;
-    pointer-events: none;
-    transition: opacity 0.3s;
-  }
-
-  .mouse-tracking__gradient::after {
-    content: '';
-    @apply absolute inset-0;
-    background: radial-gradient(
-      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(255, 255, 255, 0.08) 0%,
-      transparent 60%
-    );
-    mix-blend-mode: overlay;
-  }
 
   /* Project Cards */
   .hero__project-item {
@@ -213,7 +179,7 @@ body {
   .hero__project-item:hover {
     @apply transform scale-[1.02];
     background: var(--glass-bg-hover);
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
   }
 
   .hero__project-image {
@@ -234,12 +200,12 @@ body {
 
   .hero__project-title {
     @apply text-lg sm:text-xl md:text-2xl font-semibold mb-2 md:mb-3 line-clamp-2;
-    color: rgba(0, 108, 255, 0.8);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.95);
+    text-shadow: none;
   }
 
   .hero__project-description {
-    @apply text-sm sm:text-base text-white/80 mb-4 line-clamp-3 leading-relaxed;
+    @apply text-sm sm:text-base text-black/80 mb-4 line-clamp-3 leading-relaxed;
   }
 
   .hero__project-tech {
@@ -252,13 +218,15 @@ body {
 
   .hero__project-tech-item {
     @apply px-2 py-1 text-xs sm:text-sm rounded-full whitespace-nowrap transition-all duration-300;
-    background: var(--accent-blue);
+    background: rgba(0, 0, 0, 0.05);
     color: var(--text-primary);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.15);
   }
 
   .hero__project-tech-item:hover {
-    background: var(--accent-blue-hover);
+    background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.25);
     transform: translateY(-1px);
   }
 
@@ -270,24 +238,23 @@ body {
   .hero__project-link {
     @apply flex-1 text-center py-2.5 px-4 sm:px-6 rounded-lg text-sm sm:text-base font-medium
       transition-all duration-300 flex items-center justify-center gap-2;
-    background: linear-gradient(135deg, rgba(0, 108, 255, 0.3), rgba(0, 108, 255, 0.2));
+    background: rgba(0, 0, 0, 0.05);
     color: var(--text-primary);
     min-width: 140px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(0, 108, 255, 0.2);
-    backdrop-filter: blur(4px);
+    text-shadow: none;
+    border: 1px solid rgba(0, 0, 0, 0.15);
   }
 
   .hero__project-link:hover {
-    background: linear-gradient(135deg, rgba(0, 108, 255, 0.4), rgba(0, 108, 255, 0.3));
+    background: rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0, 108, 255, 0.2);
-    border-color: rgba(0, 108, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.25);
   }
 
   .hero__project-link:active {
     transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(0, 108, 255, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   }
 
   @media (max-width: 640px) {
@@ -319,33 +286,26 @@ body {
   /* Skill Items */
   .hero__skill-item {
     @apply relative overflow-hidden transition-all duration-500 flex flex-col items-center justify-center gap-2;
-    background: var(--glass-bg);
+    background: rgba(240, 240, 240, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     min-height: 100px;
-  }
-
-  .hero__skill-item::before {
-    content: '';
-    @apply absolute inset-0 opacity-25;
-    background: linear-gradient(135deg, var(--skill-gradient-from), var(--skill-gradient-to));
+    border-radius: 8px;
   }
 
   .hero__skill-item:hover {
     @apply transform scale-105;
-    background: var(--glass-bg-hover);
-  }
-
-  .hero__skill-item:hover::before {
-    @apply opacity-50;
+    background: rgba(230, 230, 230, 0.9);
+    border-color: rgba(0, 0, 0, 0.2);
   }
 
   .hero__skill-icon {
     @apply text-2xl md:text-3xl mb-1;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
   }
 
   .hero__skill-name {
-    @apply text-sm md:text-base font-medium text-white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    @apply text-sm md:text-base font-medium text-black;
+    text-shadow: none;
   }
 
   /* Contact Section */
@@ -354,9 +314,9 @@ body {
   }
 
   .hero__contact-content {
-    @apply relative rounded-lg p-6 backdrop-blur-sm;
+    @apply relative rounded-lg p-6;
     background: var(--glass-bg);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
   }
 
   /* Responsive Design */
@@ -408,9 +368,42 @@ body {
 
 ::-webkit-scrollbar-thumb {
   @apply rounded;
-  background: var(--accent-blue);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-blue-hover);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* CSS Animations to replace framer-motion */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInFast {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 0.5s ease-out 0.2s both;
+}
+
+.animate-fade-in-fast {
+  animation: fadeInFast 0.3s ease-out;
 }

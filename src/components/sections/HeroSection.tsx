@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { GlassCard } from "../ui/GlassCard";
 import Image from "next/image";
 import { useState } from "react";
@@ -77,32 +76,26 @@ const projects = [
 const skills = [
   {
     name: "FrontEnd",
-    gradient: "from-[#FF6B6B] to-[#ee0979]",
     icon: "🎨",
   },
   {
     name: "BackEnd",
-    gradient: "from-[#4834d4] to-[#686de0]",
     icon: "⚙️",
   },
   {
     name: "DevOps",
-    gradient: "from-[#2ecc71] to-[#27ae60]",
     icon: "🔄",
   },
   {
     name: "AI",
-    gradient: "from-[#9b59b6] to-[#8e44ad]",
     icon: "🤖",
   },
   {
     name: "Cloud",
-    gradient: "from-[#3498db] to-[#2980b9]",
     icon: "☁️",
   },
   {
     name: "Blockchain",
-    gradient: "from-[#f1c40f] to-[#f39c12]",
     icon: "⛓️",
   },
 ];
@@ -129,12 +122,7 @@ export const HeroSection = () => {
           <div className="hero__content grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
             {/* Left Column - Profile */}
             <div className="hero__profile p-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="flex flex-col items-center lg:items-start"
-              >
+              <div className="flex flex-col items-center lg:items-start animate-fade-in">
                 <div className="hero__profile-image">
                   <div className="hero__profile-image-wrapper">
                     <Image
@@ -151,12 +139,7 @@ export const HeroSection = () => {
                     title="Available for opportunities"
                   />
                 </div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-center lg:text-left"
-                >
+                <div className="text-center lg:text-left animate-fade-in-delay">
                   <h1 className="hero__title">Olufemi Afolabi</h1>
                   <p className="hero__subtitle">
                     Software Engineer & Solutions Architect
@@ -187,14 +170,14 @@ export const HeroSection = () => {
                       <FaTwitter className="w-5 h-5 sm:w-6 sm:h-6" />
                     </Link>
                   </div>
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             </div>
 
             {/* Right Column - Tabbed Content */}
             <div className="hero__content-tabs flex">
-              <GlassCard className="hero__content-card flex-1 flex flex-col p-0 overflow-hidden backdrop-blur-md">
-                <div className="hero__tabs-nav flex border-b border-white/10">
+              <GlassCard className="hero__content-card flex-1 flex flex-col p-0 overflow-hidden">
+                <div className="hero__tabs-nav flex border-b border-black/10">
                   {tabs.map(({ id, label }) => (
                     <button
                       key={id}
@@ -202,8 +185,8 @@ export const HeroSection = () => {
                       className={`hero__tab-btn flex-1 px-4 py-3 text-sm md:text-base transition-colors
                         ${
                           activeTab === id
-                            ? "bg-[rgba(0,108,255,0.2)] text-white"
-                            : "text-white/60 hover:text-white/80"
+                            ? "bg-black/10 text-black"
+                            : "text-black/60 hover:text-black/80"
                         }`}
                     >
                       {label}
@@ -212,17 +195,10 @@ export const HeroSection = () => {
                 </div>
 
                 <div className="hero__tab-content flex-1 p-4 md:p-6 lg:p-8">
-                  <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="h-full"
-                  >
+                  <div key={activeTab} className="h-full animate-fade-in-fast">
                     {activeTab === "about" && (
                       <div className="hero__about h-full flex flex-col space-y-4">
-                        <p className="hero__about-text text-white/80 text-base md:text-lg leading-relaxed">
+                        <p className="hero__about-text text-black/80 text-base md:text-lg leading-relaxed">
                           I&apos;m a tech enthusiast who finds endless wonder in
                           the possibilities of computing. Each day, I&apos;m
                           grateful for the opportunity to craft solutions that
@@ -238,22 +214,10 @@ export const HeroSection = () => {
                     {activeTab === "skills" && (
                       <div className="hero__skills h-full grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 content-start">
                         {skills.map((skill, index) => (
-                          <motion.div
+                          <div
                             key={skill.name}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3, delay: index * 0.1 }}
-                            className="hero__skill-item p-3 md:p-4 rounded-lg"
-                            style={
-                              {
-                                "--skill-gradient-from":
-                                  skill.gradient.match(/from-\[(.*?)\]/)?.[1] ||
-                                  "#000000",
-                                "--skill-gradient-to":
-                                  skill.gradient.match(/to-\[(.*?)\]/)?.[1] ||
-                                  "#000000",
-                              } as React.CSSProperties
-                            }
+                            className="hero__skill-item p-3 md:p-4"
+                            style={{ animationDelay: `${index * 0.1}s` }}
                           >
                             <span className="hero__skill-icon">
                               {skill.icon}
@@ -261,7 +225,7 @@ export const HeroSection = () => {
                             <span className="hero__skill-name">
                               {skill.name}
                             </span>
-                          </motion.div>
+                          </div>
                         ))}
                       </div>
                     )}
@@ -269,23 +233,23 @@ export const HeroSection = () => {
                     {activeTab === "contact" && (
                       <div className="hero__contact h-full flex flex-col">
                         <div className="hero__contact-content flex flex-col items-center justify-center flex-1">
-                          <div className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
+                          <div className="flex items-center gap-3 text-black/80 hover:text-black transition-colors">
                             <MdEmail className="text-2xl md:text-3xl" />
                             <Link
                               href="mailto:olufemiaf@gmail.com"
-                              className="text-lg md:text-xl hover:text-[rgba(0,108,255,0.8)] transition-colors"
+                              className="text-lg md:text-xl hover:text-black transition-colors"
                             >
                               olufemiaf@gmail.com
                             </Link>
                           </div>
-                          <p className="mt-4 text-white/60 text-center">
+                          <p className="mt-4 text-black/60 text-center">
                             Feel free to reach out for collaborations or just to
                             say hi!
                           </p>
                         </div>
                       </div>
                     )}
-                  </motion.div>
+                  </div>
                 </div>
               </GlassCard>
             </div>
@@ -298,12 +262,10 @@ export const HeroSection = () => {
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="projects__grid">
             {projects.map((project, index) => (
-              <motion.div
+              <div
                 key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="flex"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <GlassCard className="hero__project-item">
                   <div className="hero__project-image">
@@ -313,7 +275,6 @@ export const HeroSection = () => {
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[rgb(2,32,60)]/90 to-transparent" />
                   </div>
                   <div className="hero__project-content">
                     <h3 className="hero__project-title">{project.title}</h3>
@@ -362,7 +323,7 @@ export const HeroSection = () => {
                     </div>
                   </div>
                 </GlassCard>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
