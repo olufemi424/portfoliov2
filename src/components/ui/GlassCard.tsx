@@ -24,7 +24,9 @@ export const GlassCard = ({
     "glass-card relative overflow-hidden rounded-xl bg-glass border border-glass-border p-6 transition-transform duration-300";
 
   return (
-    <div className={cn(baseClasses, animate && "hover:scale-[1.01]", className)}>
+    <div
+      className={cn(baseClasses, animate && "hover:scale-[1.01]", className)}
+    >
       {children}
     </div>
   );
