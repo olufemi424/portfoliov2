@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Courier_Prime } from "next/font/google";
 import "./globals.css";
-import MouseTrackingProvider from "@/components/MouseTrackingProvider";
 import Head from "next/head";
 
-const inter = Inter({ subsets: ["latin"] });
+const courierPrime = Courier_Prime({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Olufemi Afolabi - Portfolio",
@@ -34,10 +36,8 @@ export default function RootLayout({
         <meta property="og:url" content="https://olufemiaf.info" />
         {/* <meta name="twitter:card" content="summary_large_image" /> */}
       </Head>
-      <body className={`${inter.className} gradient-background`}>
-        <MouseTrackingProvider>
-          <main className="portfolio__main">{children}</main>
-        </MouseTrackingProvider>
+      <body className={`${courierPrime.className}`}>
+        <main className="portfolio__main">{children}</main>
       </body>
     </html>
   );

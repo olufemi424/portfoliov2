@@ -1,18 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { GlassCard } from "../ui/GlassCard";
 import Image from "next/image";
-import { useState } from "react";
 import {
   FaGithub,
   FaLinkedin,
   FaTwitter,
   FaExternalLinkAlt,
-  FaGlobe,
+  FaCopy,
 } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import { MdCheck } from "react-icons/md";
 import Link from "next/link";
+import { useState } from "react";
 
 // Define image paths
 const IMAGES = {
@@ -22,348 +20,222 @@ const IMAGES = {
   devops: "/assets/project-img/moti-app.png",
 };
 
-const projects = [
-  {
-    title: "Niniwise - Product Hub",
-    description:
-      "An innovative technology company pioneering solutions across AI, blockchain, and IoT. Their flagship product suite includes smart city infrastructure management, advanced supply chain optimization tools, and enterprise-grade security systems. Known for leveraging cutting-edge tech to tackle complex real-world challenges with measurable impact.",
-    image: IMAGES.niniwise,
-    technologies: [
-      "Vue.js",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "WebSocket",
-      "TradingView API",
-    ],
-    liveUrl: "https://streaming-structured-output-nine.vercel.app/",
-    githubUrl: "https://github.com/{}/niniwise",
+const company = {
+  name: "Niniwise",
+  founded: "2023",
+  description:
+    "A technology company building intelligent solutions for modern problems. We create products that bridge the gap between complex technology and everyday users.",
+  philosophy: {
+    vision: "Technology should empower, not overwhelm",
+    mission: "Build tools that people actually want to use",
+    approach: "Start simple, iterate fast, deliver value",
   },
-  {
-    title: "Career Bridge",
-    description:
-      "A platform that helps job seekers find their dream jobs and employers find the right talent. It provides a comprehensive suite of tools for job seekers, including resume builder, job search, and interview preparation.",
-    image: IMAGES.aiContent,
-    technologies: [
-      "React",
-      "TypeScript",
-      "Python",
-      "FastAPI",
-      "OpenAI",
-      "PostgreSQL",
-    ],
-    liveUrl:
-      "https://streaming-structured-output-nine.vercel.app/career-bridge",
-    githubUrl: "https://github.com/{}/career-bridge",
-  },
-  {
-    title: "Moti App",
-    description:
-      "This app takes input from the user and generate a quote based on the input, the quote is generated using the OpenAI API, the model used is gpt-3.5-turbo, the app is built with Next.js and Tailwind CSS",
-    image: IMAGES.devops,
-    technologies: [
-      "Next.js",
-      "AWS",
-      "Docker",
-      "Kubernetes",
-      "GraphQL",
-      "Redis",
-    ],
-    liveUrl: "https://moti.niniwise.com",
-    githubUrl: "https://github.com/{}/devops-dashboard",
-  },
-];
-
-const skills = [
-  {
-    name: "FrontEnd",
-    gradient: "from-[#FF6B6B] to-[#ee0979]",
-    icon: "🎨",
-  },
-  {
-    name: "BackEnd",
-    gradient: "from-[#4834d4] to-[#686de0]",
-    icon: "⚙️",
-  },
-  {
-    name: "DevOps",
-    gradient: "from-[#2ecc71] to-[#27ae60]",
-    icon: "🔄",
-  },
-  {
-    name: "AI",
-    gradient: "from-[#9b59b6] to-[#8e44ad]",
-    icon: "🤖",
-  },
-  {
-    name: "Cloud",
-    gradient: "from-[#3498db] to-[#2980b9]",
-    icon: "☁️",
-  },
-  {
-    name: "Blockchain",
-    gradient: "from-[#f1c40f] to-[#f39c12]",
-    icon: "⛓️",
-  },
-];
+  url: "https://niniwise.com",
+  image: IMAGES.niniwise,
+};
 
 /**
- * Enhanced hero section component that combines about, skills, and contact
+ * Enhanced hero section component that combines about and contact
  * Features a creative layout with depth and responsive design
  */
 export const HeroSection = () => {
-  const [activeTab, setActiveTab] = useState<"about" | "skills" | "contact">(
-    "about"
-  );
+  const [emailCopied, setEmailCopied] = useState(false);
 
-  const tabs = [
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "contact", label: "Contact" },
-  ] as const;
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("olufemiaf@gmail.com");
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy email:", err);
+    }
+  };
 
   return (
     <>
-      <section className="hero pt-4 pb-12 sm:py-4 md:py-8">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="hero__content grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch">
-            {/* Left Column - Profile */}
-            <div className="hero__profile p-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="flex flex-col items-center lg:items-start"
-              >
-                <div className="hero__profile-image">
-                  <div className="hero__profile-image-wrapper">
-                    <Image
-                      src={IMAGES.profile}
-                      alt="Profile"
-                      priority
-                      width={192}
-                      height={192}
-                      className="hero__profile-img"
-                    />
-                  </div>
-                  <div
-                    className="hero__profile-status"
-                    title="Available for opportunities"
-                  />
-                </div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-center lg:text-left"
-                >
-                  <h1 className="hero__title">Olufemi Afolabi</h1>
-                  <p className="hero__subtitle">
-                    Software Engineer & Solutions Architect
-                  </p>
-                  <div className="hero__social-links">
-                    <Link
-                      href="https://github.com/olufemi424"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="GitHub Profile"
-                    >
-                      <FaGithub className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </Link>
-                    <Link
-                      href="https://linkedin.com/in/olufemiafolabi91"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="LinkedIn Profile"
-                    >
-                      <FaLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </Link>
-                    <Link
-                      href="https://twitter.com/afofm"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="Twitter Profile"
-                    >
-                      <FaTwitter className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </Link>
-                  </div>
-                </motion.div>
-              </motion.div>
+      <section className="hero py-16 sm:py-20 md:py-24 lg:py-32">
+        <div className="hero__container max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          {/* Main Content */}
+          <div className="hero__content max-w-4xl">
+            {/* Profile Image - Minimal */}
+            <div className="hero__profile-image mb-12 animate-fade-in">
+              <div className="hero__profile-image-wrapper relative inline-block">
+                <Image
+                  src={IMAGES.profile}
+                  alt="Profile"
+                  priority
+                  width={120}
+                  height={120}
+                  className="hero__profile-img rounded-full"
+                />
+                <div
+                  className="hero__profile-status absolute bottom-1 right-1 w-4 h-4 bg-black rounded-full border-2 border-white"
+                  title="Available for opportunities"
+                />
+              </div>
             </div>
 
-            {/* Right Column - Tabbed Content */}
-            <div className="hero__content-tabs flex">
-              <GlassCard className="hero__content-card flex-1 flex flex-col p-0 overflow-hidden backdrop-blur-md">
-                <div className="hero__tabs-nav flex border-b border-white/10">
-                  {tabs.map(({ id, label }) => (
-                    <button
-                      key={id}
-                      onClick={() => setActiveTab(id)}
-                      className={`hero__tab-btn flex-1 px-4 py-3 text-sm md:text-base transition-colors
-                        ${
-                          activeTab === id
-                            ? "bg-[rgba(0,108,255,0.2)] text-white"
-                            : "text-white/60 hover:text-white/80"
-                        }`}
-                    >
-                      {label}
-                    </button>
-                  ))}
-                </div>
+            {/* Name & Title - Large Typography */}
+            <div className="hero__intro mb-12 animate-fade-in-delay">
+              <h1 className="hero__title text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-black mb-6 leading-none tracking-tight">
+                Olufemi
+                <br />
+                Afolabi
+              </h1>
+              <p className="hero__subtitle text-xl sm:text-2xl md:text-3xl text-black/60 mb-8 font-light">
+                Software Engineer &<br className="sm:hidden" /> Solutions
+                Architect
+              </p>
 
-                <div className="hero__tab-content flex-1 p-4 md:p-6 lg:p-8">
-                  <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
-                    className="h-full"
+              {/* Social Links - Inline */}
+              <div className="hero__social-links flex items-center gap-6">
+                <Link
+                  href="https://github.com/olufemi424"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                  className="hero__social-link hero__social-link--github text-black/60 hover:text-black transition-colors"
+                >
+                  <FaGithub className="hero__social-icon w-6 h-6" />
+                </Link>
+                <Link
+                  href="https://linkedin.com/in/olufemiafolabi91"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
+                  className="hero__social-link hero__social-link--linkedin text-black/60 hover:text-black transition-colors"
+                >
+                  <FaLinkedin className="hero__social-icon w-6 h-6" />
+                </Link>
+                <Link
+                  href="https://twitter.com/afofm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter Profile"
+                  className="hero__social-link hero__social-link--twitter text-black/60 hover:text-black transition-colors"
+                >
+                  <FaTwitter className="hero__social-icon w-6 h-6" />
+                </Link>
+                <span className="text-black/20">•</span>
+                <div className="hero__email-wrapper flex items-center gap-2">
+                  <span className="hero__email-text text-base text-black/60">
+                    olufemiaf@gmail.com
+                  </span>
+                  <button
+                    onClick={handleCopyEmail}
+                    aria-label="Copy email to clipboard"
+                    className="hero__email-copy-btn p-1.5 rounded hover:bg-black/5 transition-colors"
                   >
-                    {activeTab === "about" && (
-                      <div className="hero__about h-full flex flex-col space-y-4">
-                        <p className="hero__about-text text-white/80 text-base md:text-lg leading-relaxed">
-                          I&apos;m a tech enthusiast who finds endless wonder in
-                          the possibilities of computing. Each day, I&apos;m
-                          grateful for the opportunity to craft solutions that
-                          make a difference in people&apos;s lives. When
-                          I&apos;m not exploring the fascinating world of code,
-                          you&apos;ll find me cherishing moments with my amazing
-                          wife and two wonderful daughters who bring joy and
-                          purpose to everything I do.
-                        </p>
-                      </div>
+                    {emailCopied ? (
+                      <MdCheck className="hero__email-icon w-4 h-4 text-green-600" />
+                    ) : (
+                      <FaCopy className="hero__email-icon w-4 h-4 text-black/40" />
                     )}
-
-                    {activeTab === "skills" && (
-                      <div className="hero__skills h-full grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 content-start">
-                        {skills.map((skill, index) => (
-                          <motion.div
-                            key={skill.name}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3, delay: index * 0.1 }}
-                            className="hero__skill-item p-3 md:p-4 rounded-lg"
-                            style={
-                              {
-                                "--skill-gradient-from":
-                                  skill.gradient.match(/from-\[(.*?)\]/)?.[1] ||
-                                  "#000000",
-                                "--skill-gradient-to":
-                                  skill.gradient.match(/to-\[(.*?)\]/)?.[1] ||
-                                  "#000000",
-                              } as React.CSSProperties
-                            }
-                          >
-                            <span className="hero__skill-icon">
-                              {skill.icon}
-                            </span>
-                            <span className="hero__skill-name">
-                              {skill.name}
-                            </span>
-                          </motion.div>
-                        ))}
-                      </div>
-                    )}
-
-                    {activeTab === "contact" && (
-                      <div className="hero__contact h-full flex flex-col">
-                        <div className="hero__contact-content flex flex-col items-center justify-center flex-1">
-                          <div className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
-                            <MdEmail className="text-2xl md:text-3xl" />
-                            <Link
-                              href="mailto:olufemiaf@gmail.com"
-                              className="text-lg md:text-xl hover:text-[rgba(0,108,255,0.8)] transition-colors"
-                            >
-                              olufemiaf@gmail.com
-                            </Link>
-                          </div>
-                          <p className="mt-4 text-white/60 text-center">
-                            Feel free to reach out for collaborations or just to
-                            say hi!
-                          </p>
-                        </div>
-                      </div>
-                    )}
-                  </motion.div>
+                  </button>
                 </div>
-              </GlassCard>
+              </div>
+            </div>
+
+            {/* About - Clean Typography */}
+            <div className="hero__about">
+              <p className="hero__about-text text-lg sm:text-xl md:text-2xl text-black/70 leading-relaxed mb-16 font-light">
+                Tech enthusiast crafting solutions that make a difference.
+                Passionate about building scalable systems and exploring
+                emerging technologies.
+              </p>
+
+              {/* Highlights - Minimal */}
+              <div className="hero__highlights space-y-8">
+                <div className="hero__highlight hero__highlight--focus">
+                  <div className="hero__highlight-title text-xs uppercase tracking-wider text-black/40 mb-2 font-medium">
+                    Focus Areas
+                  </div>
+                  <div className="hero__highlight-text text-base md:text-lg text-black/80">
+                    Full-stack Development • Cloud Architecture • AI Integration
+                  </div>
+                </div>
+                <div className="hero__highlight hero__highlight--philosophy">
+                  <div className="hero__highlight-title text-xs uppercase tracking-wider text-black/40 mb-2 font-medium">
+                    Philosophy
+                  </div>
+                  <div className="hero__highlight-text text-base md:text-lg text-black/80">
+                    Build fast, iterate faster, deliver value
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="projects pb-12 sm:py-4 md:py-8">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="projects__grid">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="flex"
+      {/* Company Section */}
+      <section className="company py-16 sm:py-20 md:py-24 lg:py-32 border-t border-black/10">
+        <div className="company__container max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="company__content max-w-4xl">
+            {/* Section Label */}
+            <div className="company__label mb-12">
+              <span className="text-xs uppercase tracking-wider text-black/40 font-medium">
+                Founder
+              </span>
+            </div>
+
+            {/* Company Name & Year */}
+            <div className="company__header mb-12">
+              <h2 className="company__name text-4xl sm:text-5xl md:text-6xl font-bold text-black mb-6 leading-tight">
+                {company.name}
+              </h2>
+              <p className="company__founded text-lg text-black/50">
+                Founded {company.founded}
+              </p>
+            </div>
+
+            {/* Description */}
+            <div className="company__description mb-16">
+              <p className="text-lg sm:text-xl md:text-2xl text-black/70 leading-relaxed font-light">
+                {company.description}
+              </p>
+            </div>
+
+            {/* Philosophy */}
+            <div className="company__philosophy space-y-8 mb-16">
+              <div className="company__philosophy-item">
+                <div className="text-xs uppercase tracking-wider text-black/40 mb-2 font-medium">
+                  Vision
+                </div>
+                <p className="text-base md:text-lg text-black/80">
+                  {company.philosophy.vision}
+                </p>
+              </div>
+              <div className="company__philosophy-item">
+                <div className="text-xs uppercase tracking-wider text-black/40 mb-2 font-medium">
+                  Mission
+                </div>
+                <p className="text-base md:text-lg text-black/80">
+                  {company.philosophy.mission}
+                </p>
+              </div>
+              <div className="company__philosophy-item">
+                <div className="text-xs uppercase tracking-wider text-black/40 mb-2 font-medium">
+                  Approach
+                </div>
+                <p className="text-base md:text-lg text-black/80">
+                  {company.philosophy.approach}
+                </p>
+              </div>
+            </div>
+
+            {/* Link */}
+            <div className="company__link">
+              <Link
+                href={company.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-black/60 hover:text-black transition-colors text-base"
               >
-                <GlassCard className="hero__project-item">
-                  <div className="hero__project-image">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[rgb(2,32,60)]/90 to-transparent" />
-                  </div>
-                  <div className="hero__project-content">
-                    <h3 className="hero__project-title">{project.title}</h3>
-                    <p className="hero__project-description">
-                      {project.description}
-                    </p>
-                    <div className="hero__project-tech">
-                      <div
-                        className="hero__project-tech-list"
-                        aria-label="Technologies used"
-                      >
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="hero__project-tech-item"
-                            title={tech}
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="hero__project-links">
-                        <Link
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hero__project-link"
-                          aria-label={`View live demo of ${project.title}`}
-                        >
-                          <FaGlobe className="w-4 h-4 sm:w-5 sm:h-5" />
-                          <span>View Live Demo</span>
-                          <FaExternalLinkAlt className="w-3 h-3 sm:w-4 sm:h-4 opacity-70" />
-                        </Link>
-                        {/* <Link
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="hero__project-link"
-                          aria-label={`View source code of ${project.title} on GitHub`}
-                        >
-                          <FaGithub className="w-4 h-4 sm:w-5 sm:h-5" />
-                          <span>Source Code</span>
-                          <FaExternalLinkAlt className="w-3 h-3 sm:w-4 sm:h-4 opacity-70" />
-                        </Link> */}
-                      </div>
-                    </div>
-                  </div>
-                </GlassCard>
-              </motion.div>
-            ))}
+                <span>Visit {company.name}</span>
+                <FaExternalLinkAlt className="w-3 h-3" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
