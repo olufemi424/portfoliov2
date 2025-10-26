@@ -49,6 +49,24 @@ body {
 
   .portfolio__main {
     @apply container mx-auto;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  .portfolio__main::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/assets/profileimage/profileImage.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
   }
 
   /* Hero Profile */
