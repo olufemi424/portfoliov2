@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Courier_Prime } from "next/font/google";
 import "./globals.css";
-import Head from "next/head";
 
 const courierPrime = Courier_Prime({
   subsets: ["latin"],
@@ -9,8 +8,19 @@ const courierPrime = Courier_Prime({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://olufemiaf.info"),
   title: "Olufemi Afolabi - Portfolio",
   description: "Software Engineer & Solutions Architect Portfolio",
+  openGraph: {
+    title: "Olufemi Afolabi",
+    description: "Software Engineer & Solutions Architect Portfolio",
+    url: "https://olufemiaf.info",
+    images: [
+      {
+        url: "/preview-image.png",
+      },
+    ],
+  },
 };
 
 /**
@@ -25,17 +35,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="portfolio scroll-smooth">
-      <Head>
-        <title>Olufemi Afolabi</title>
-        <meta property="og:title" content="Portfolio" key="Portfolio" />
-        <meta
-          property="og:description"
-          content="Software Engineer & Solutions Architect Portfolio"
-        />
-        <meta property="og:image" content="/preview-image.png" />
-        <meta property="og:url" content="https://olufemiaf.info" />
-        {/* <meta name="twitter:card" content="summary_large_image" /> */}
-      </Head>
       <body className={`${courierPrime.className}`}>
         <main className="portfolio__main">{children}</main>
       </body>
