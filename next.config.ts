@@ -1,8 +1,10 @@
 import type { Configuration } from 'webpack';
 import type { NextConfig } from 'next';
+import path from 'path';
 
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
+  outputFileTracingRoot: path.join(__dirname),
   output: 'export',  // Enable static exports
   images: {
     unoptimized: true, // Required for static export
