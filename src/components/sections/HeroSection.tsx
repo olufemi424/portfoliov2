@@ -23,11 +23,11 @@ const company = {
   name: "Niniwise",
   founded: "2023",
   description:
-    "A technology company building intelligent solutions for modern problems. We create products that bridge the gap between complex technology and everyday users.",
+    "At Niniwise, we build practical AI products and workflow automation tools for teams that need outcomes—not complexity.",
   philosophy: {
-    vision: "Technology should empower, not overwhelm",
-    mission: "Build tools that people actually want to use",
-    approach: "Start simple, iterate fast, deliver value",
+    vision: "Technology should empower people to move faster with confidence",
+    mission: "Turn complex workflows into products teams actually use",
+    approach: "Ship fast, learn fast, and improve with real user feedback",
   },
   url: "https://niniwise.com",
   image: IMAGES.niniwise,
@@ -64,8 +64,8 @@ export const HeroSection = () => {
                 Afolabi
               </h1>
               <p className="hero__subtitle text-lg sm:text-xl md:text-2xl lg:text-3xl text-black/60 mb-6 sm:mb-7 md:mb-8 font-light">
-                Software Engineer &<br className="sm:hidden" /> Solutions
-                Architect
+                Software Engineer, Product Builder &<br className="sm:hidden" />
+                AI Systems Architect
               </p>
 
               {/* Social Links - Responsive Layout */}
@@ -122,9 +122,10 @@ export const HeroSection = () => {
             {/* About - Clean Typography */}
             <div className="hero__about">
               <p className="hero__about-text text-base sm:text-lg md:text-xl lg:text-2xl text-black/70 leading-relaxed mb-12 sm:mb-14 md:mb-16 font-light">
-                Tech enthusiast crafting solutions that make a difference.
-                Passionate about building scalable systems and exploring
-                emerging technologies.
+                I design and ship software systems that turn complex workflows
+                into practical products. My work sits at the intersection of
+                product strategy, engineering execution, and AI-enabled
+                automation.
               </p>
 
               {/* Highlights - Minimal */}
@@ -134,7 +135,7 @@ export const HeroSection = () => {
                     Focus Areas
                   </div>
                   <div className="hero__highlight-text text-sm sm:text-base md:text-lg text-black/80">
-                    Full-stack Development • Cloud Architecture • AI Integration
+                    AI Product Engineering • Workflow Automation • Full-Stack Systems
                   </div>
                 </div>
                 <div className="hero__highlight hero__highlight--philosophy">
@@ -142,7 +143,7 @@ export const HeroSection = () => {
                     Philosophy
                   </div>
                   <div className="hero__highlight-text text-sm sm:text-base md:text-lg text-black/80">
-                    Build fast, iterate faster, deliver value
+                    Ship useful outcomes fast, then improve with real-world feedback
                   </div>
                 </div>
               </div>

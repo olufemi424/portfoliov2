@@ -5,124 +5,116 @@ import moviedb from "./project-img/moviedb.png";
 import twitterLike from "./project-img/twitterLike.png";
 import pokemon from "./project-img/pokemon.png";
 
-
 const datas = [
-	{
-		title: "Pokemon API Fed Challenge, IBM",
-		subTitle: "Front-End UI Design and API consumption",
-		image: pokemon,
-		icons: {
-         github: '',
-         link: ''
-      },
-      githubLink:"https://github.com/olufemi424/senior-fed-challenge",
-      liveHostLink:"https://kaleidoscopic-truffle-37070f.netlify.app",
-		desc:
-			"This project is an IBM Front-End UI design and API consumption challenge. I was able to work with the provided Endpoint and create a beautiful UI design. The features include: List of pokemon (Grid and List View) with pagination, Search by Name, filter by type, Favorite and Unfavorite a particular pokemon, view the list of favorite pokemon and view the details of a particular pokemon with corresponding Evolutions. It was a fun project and i learned using TypeScript with Vue, which is a modern front-end frame work",
-		tools: [
-			"HTML",
-			"CSS",
-			"JavaScript",
-			"Vue",
-			"TypeScript",
-			"IBM Pokemon API"
-		]
-	},
-	{
-		title: "twitterLike",
-		subTitle: "MERN Stack Application",
-		image: twitterLike,
-		icons: {
-         github: '',
-         link: ''
-      },
-      githubLink:"https://github.com/olufemi424/socialConnet",
-      liveHostLink:"https://socialconnect-ad8d3.firebaseapp.com/",
-		desc:
-			"twitterLike is a twitter like clone application. Basic CRUD application with some notifications functionality, built purely with react front end and firebase cloud funtions. And also hosted on firebase.",
-		tools: [
-			"HTML",
-			"XML",
-			"CSS",
-			"Material UI",
-			"Javascript",
-			"React",
-			"React-Redux",
-			"Firebase - Firestore"
-		]
-	},
-	{
-		title: "DevFConnect",
-		subTitle: "MERN Stack Application",
-		image: friendConnect,
-      icons: {
-         github:'',
-         link:''
-      },
-      githubLink:"https://github.com/olufemi424/friendConnect",
-      liveHostLink:"https://lit-fortress-87525.herokuapp.com/",
-		desc:
-			"Currently working on DevFConnect, which is a social media application,where developers can create an account, and connect with other developers. The idea of this app is to provide a platform where developers can make friends with other developers.",
-		tools: [
-			"HTML",
-			"CSS",
-			"SASS",
-			"Javascript",
-			"React",
-			"React Redux",
-			"Passport",
-			"JWT Token",
-			"MongoDb",
-			"Mongoose"
-		]
-	},
-	{
-		title: "Moviedb",
-		subTitle: "Moviedb API React App",
-		image: moviedb,
-      icons: {
-         github:'',
-         link:''
-      },
-      githubLink:"https://github.com/olufemi424/movie-database",
-      liveHostLink:"https://dreamy-bohr-8faae8.netlify.com/",
-		desc:
-			"The idea of Moviedb app, is to create a platform where the app users can check recent movies or shows and also, see what is trending with regards to movies or shows. Users can see details about each movie/show and also search for their movie of choice. New features will be added such as movie thrillers and movie suggestions based on what movie you are checking its details.",
-		tools: [
-			"HTML",
-			"CSS",
-			"SASS",
-			"Javascript",
-			"React",
-			"React Redux",
-			"JSX",
-			"React-Styled-Components"
-		]
-	},
-	{
-		title: "Lyrica lyrics App",
-		subTitle: "",
-		image: lyrica,
-      icons: {
-         github:'',
-         link:''
-      },
-      githubLink:"https://github.com/olufemi424/lyricsApp",
-      liveHostLink:"https://lyricsappfirebaseauth.herokuapp.com/login",
-		desc:
-			"Lyrics finder app with Firebase-Auth, React. This little project shows firebase login and pulling data from a third API.",
-		tools: [
-			"HTML",
-			"CSS",
-			"SASS",
-			"Javascript",
-			"React",
-			"React Redux",
-			"Firebase Auth",
-			"Firestore",
-			"React-Styled-Components"
-		]
-	}
+  {
+    title: "IBM Pokémon Front-End Challenge",
+    subTitle: "UI engineering and API integration",
+    image: pokemon,
+    icons: {
+      github: "",
+      link: "",
+    },
+    githubLink: "https://github.com/olufemi424/senior-fed-challenge",
+    liveHostLink: "https://kaleidoscopic-truffle-37070f.netlify.app",
+    desc: "Built a responsive Pokémon explorer from a design-and-API challenge brief. The app supports grid/list views, pagination, search, type filters, favorites, detail pages, and evolution chains. This project sharpened my TypeScript + Vue workflow and reinforced component-driven UI architecture.",
+    tools: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Vue",
+      "TypeScript",
+      "IBM Pokémon API",
+    ],
+  },
+  {
+    title: "SocialConnect (Twitter-like App)",
+    subTitle: "React + Firebase social platform",
+    image: twitterLike,
+    icons: {
+      github: "",
+      link: "",
+    },
+    githubLink: "https://github.com/olufemi424/socialConnet",
+    liveHostLink: "https://socialconnect-ad8d3.firebaseapp.com/",
+    desc: "A Twitter-inspired social app built with React and Firebase. Users can create posts, interact through core social actions, and receive notifications in real time. The project focused on shipping a clean CRUD architecture with cloud-hosted backend logic.",
+    tools: [
+      "HTML",
+      "CSS",
+      "Material UI",
+      "JavaScript",
+      "React",
+      "React Redux",
+      "Firebase (Firestore + Functions)",
+    ],
+  },
+  {
+    title: "DevFConnect",
+    subTitle: "Developer networking platform",
+    image: friendConnect,
+    icons: {
+      github: "",
+      link: "",
+    },
+    githubLink: "https://github.com/olufemi424/friendConnect",
+    liveHostLink: "https://lit-fortress-87525.herokuapp.com/",
+    desc: "A social platform concept for developers to create profiles, connect with peers, and grow their network. This project explored authentication, profile management, and API-driven social interactions across a MERN-style architecture.",
+    tools: [
+      "HTML",
+      "CSS",
+      "Sass",
+      "JavaScript",
+      "React",
+      "React Redux",
+      "Passport",
+      "JWT",
+      "MongoDB",
+      "Mongoose",
+    ],
+  },
+  {
+    title: "MovieDB Explorer",
+    subTitle: "Movie discovery React app",
+    image: moviedb,
+    icons: {
+      github: "",
+      link: "",
+    },
+    githubLink: "https://github.com/olufemi424/movie-database",
+    liveHostLink: "https://dreamy-bohr-8faae8.netlify.com/",
+    desc: "A movie discovery app for browsing trending titles, exploring show details, and searching by title. Designed as a fast, user-friendly interface for content discovery, with room for recommendation and trailer enhancements.",
+    tools: [
+      "HTML",
+      "CSS",
+      "Sass",
+      "JavaScript",
+      "React",
+      "React Redux",
+      "Styled Components",
+    ],
+  },
+  {
+    title: "Lyrica Lyrics App",
+    subTitle: "Lyrics search + auth flow",
+    image: lyrica,
+    icons: {
+      github: "",
+      link: "",
+    },
+    githubLink: "https://github.com/olufemi424/lyricsApp",
+    liveHostLink: "https://lyricsappfirebaseauth.herokuapp.com/login",
+    desc: "A lightweight lyrics finder with Firebase authentication and third-party API integration. This project demonstrates practical auth flows, external API consumption, and clean React state handling in a compact product experience.",
+    tools: [
+      "HTML",
+      "CSS",
+      "Sass",
+      "JavaScript",
+      "React",
+      "React Redux",
+      "Firebase Auth",
+      "Firestore",
+      "Styled Components",
+    ],
+  },
 ];
 
 export default datas;
