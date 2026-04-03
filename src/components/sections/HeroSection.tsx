@@ -10,7 +10,6 @@ import {
 import { MdCheck } from "react-icons/md";
 import Link from "next/link";
 import { useState } from "react";
-import { HtmlInCanvasDemo } from "@/components/experimental/HtmlInCanvasDemo";
 
 // Define image paths
 const IMAGES = {
@@ -119,8 +118,6 @@ export const HeroSection = () => {
                 </div>
               </div>
             </div>
-
-            <HtmlInCanvasDemo />
 
             {/* About - Clean Typography */}
             <div className="hero__about">
