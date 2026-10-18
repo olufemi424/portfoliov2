@@ -174,6 +174,14 @@ export const HeroSection = () => {
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-black/70 leading-relaxed font-light max-w-3xl">
               {company.description} We design the workflow, connect the tools, and build custom AI agents that work alongside the team.
             </p>
+            <a
+              href="https://niniwise.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 text-sm sm:text-base font-medium text-black transition-colors hover:text-black/60"
+            >
+              Visit Niniwise <FaExternalLinkAlt className="h-3 w-3" />
+            </a>
           </div>
 
           <div className="grid gap-8 border-y border-black/10 py-8 sm:grid-cols-3 sm:gap-10 sm:py-10">
