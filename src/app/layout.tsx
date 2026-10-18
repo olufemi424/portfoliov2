@@ -11,6 +11,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://olufemiaf.info"),
   title: "Femi Afolabi - Portfolio",
   description: "Software Engineer & Solutions Architect Portfolio",
+  icons: {
+    icon: [
+      {
+        url: "/assets/profileimage/femi-afolabi.jpg",
+        type: "image/jpeg",
+      },
+    ],
+  },
   openGraph: {
     title: "Femi Afolabi",
     description: "Software Engineer & Solutions Architect Portfolio",
