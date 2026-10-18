@@ -4,16 +4,18 @@ import {
   FaGithub,
   FaLinkedin,
   FaTwitter,
+  FaInstagram,
   FaExternalLinkAlt,
   FaCopy,
 } from "react-icons/fa";
 import { MdCheck } from "react-icons/md";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 // Define image paths
 const IMAGES = {
-  profile: "/assets/profileimage/profileImage.jpg",
+  profile: "/assets/profileimage/femi-afolabi.jpg",
   niniwise: "/assets/project-img/niniwise-company.png",
   aiContent: "/assets/project-img/career-bridge-app.png",
   devops: "/assets/project-img/moti-app.png",
@@ -23,14 +25,7 @@ const company = {
   name: "Niniwise",
   founded: "2023",
   description:
-    "At Niniwise, we build practical AI products and workflow automation tools for teams that need outcomes—not complexity.",
-  philosophy: {
-    vision: "Technology should empower people to move faster with confidence",
-    mission: "Turn complex workflows into products teams actually use",
-    approach: "Ship fast, learn fast, and improve with real user feedback",
-  },
-  url: "https://niniwise.com",
-  image: IMAGES.niniwise,
+    "Niniwise helps small businesses turn messy operations into workflows their teams can actually run.",
 };
 
 /**
@@ -52,20 +47,42 @@ export const HeroSection = () => {
 
   return (
     <>
-      <section className="hero py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32">
-        <div className="hero__container max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+      <section className="hero flex min-h-[72vh] items-center py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32">
+        <div className="hero__container grid max-w-7xl mx-auto items-center gap-12 px-4 sm:px-6 md:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,420px)] lg:gap-16 lg:px-12">
           {/* Main Content */}
           <div className="hero__content max-w-4xl">
             {/* Name & Title - Large Typography */}
             <div className="hero__intro mb-10 sm:mb-12 animate-fade-in">
               <h1 className="hero__title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-black mb-4 sm:mb-5 md:mb-6 leading-none tracking-tight">
-                Olufemi
+                Femi
                 <br />
                 Afolabi
               </h1>
-              <p className="hero__subtitle text-lg sm:text-xl md:text-2xl lg:text-3xl text-black/60 mb-6 sm:mb-7 md:mb-8 font-light">
-                Software Engineer, Product Builder &<br className="sm:hidden" />
-                AI Systems Architect
+              <p className="hero__subtitle text-lg sm:text-xl md:text-2xl lg:text-3xl text-black/60 mb-6 sm:mb-7 md:mb-8 font-light max-w-3xl">
+                I build practical AI products and workflows for teams that want to move faster without adding complexity.
+              </p>
+
+              <p className="text-sm sm:text-base text-black/50 mb-7 sm:mb-8 max-w-2xl">
+                I work with founders and small teams to turn messy processes into useful, shipped software.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-10">
+                <a
+                  href="#company"
+                  className="inline-flex items-center justify-center rounded-lg bg-black px-5 py-3 text-sm sm:text-base font-medium text-white transition-colors hover:bg-black/80"
+                >
+                  See what I&apos;m building
+                </a>
+                <a
+                  href="mailto:olufemiaf@gmail.com?subject=Let&apos;s work together"
+                  className="inline-flex items-center justify-center rounded-lg border border-black/20 px-5 py-3 text-sm sm:text-base font-medium text-black transition-colors hover:border-black/50 hover:bg-black/5"
+                >
+                  Work with me
+                </a>
+              </div>
+
+              <p className="text-xs sm:text-sm uppercase tracking-wider text-black/40 mb-8 sm:mb-10">
+                Founder of Niniwise · AI product engineering · Workflow automation
               </p>
 
               {/* Social Links - Responsive Layout */}
@@ -98,6 +115,15 @@ export const HeroSection = () => {
                   >
                     <FaTwitter className="hero__social-icon w-5 h-5 sm:w-6 sm:h-6" />
                   </Link>
+                  <Link
+                    href="https://www.instagram.com/olufemiaf/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram Profile"
+                    className="hero__social-link hero__social-link--instagram text-black/60 hover:text-black transition-colors"
+                  >
+                    <FaInstagram className="hero__social-icon w-5 h-5 sm:w-6 sm:h-6" />
+                  </Link>
                 </div>
                 <span className="hidden sm:inline text-black/20">•</span>
                 <div className="hero__email-wrapper flex items-center gap-2">
@@ -118,34 +144,19 @@ export const HeroSection = () => {
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* About - Clean Typography */}
-            <div className="hero__about">
-              <p className="hero__about-text text-base sm:text-lg md:text-xl lg:text-2xl text-black/70 leading-relaxed mb-12 sm:mb-14 md:mb-16 font-light">
-                I design and ship software systems that turn complex workflows
-                into practical products. My work sits at the intersection of
-                product strategy, engineering execution, and AI-enabled
-                automation.
-              </p>
-
-              {/* Highlights - Minimal */}
-              <div className="hero__highlights space-y-6 sm:space-y-7 md:space-y-8">
-                <div className="hero__highlight hero__highlight--focus">
-                  <div className="hero__highlight-title text-xs uppercase tracking-wider text-black/40 mb-2 font-medium">
-                    Focus Areas
-                  </div>
-                  <div className="hero__highlight-text text-sm sm:text-base md:text-lg text-black/80">
-                    AI Product Engineering • Workflow Automation • Full-Stack Systems
-                  </div>
-                </div>
-                <div className="hero__highlight hero__highlight--philosophy">
-                  <div className="hero__highlight-title text-xs uppercase tracking-wider text-black/40 mb-2 font-medium">
-                    Philosophy
-                  </div>
-                  <div className="hero__highlight-text text-sm sm:text-base md:text-lg text-black/80">
-                    Ship useful outcomes fast, then improve with real-world feedback
-                  </div>
-                </div>
+          <div className="hero__portrait relative mx-auto w-full max-w-sm lg:max-w-none">
+            <div className="relative aspect-[2/3] rounded-[2rem] border border-white/80 bg-white/35 p-2 shadow-[0_24px_80px_rgba(0,0,0,0.12)] backdrop-blur-md ring-1 ring-black/5">
+              <div className="relative h-full w-full overflow-hidden rounded-[1.5rem] bg-black/5">
+                <Image
+                  src={IMAGES.profile}
+                  alt="Portrait of Femi Afolabi"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 320px, 420px"
+                  className="object-cover object-center"
+                />
               </div>
             </div>
           </div>
@@ -153,74 +164,64 @@ export const HeroSection = () => {
       </section>
 
       {/* Company Section */}
-      <section className="company py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 border-t border-black/10">
+      <section id="company" className="company py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 border-t border-black/10">
         <div className="company__container max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="company__content max-w-4xl">
-            {/* Section Label */}
-            <div className="company__label mb-8 sm:mb-10 md:mb-12">
-              <span className="text-xs uppercase tracking-wider text-black/40 font-medium">
-                Founder
-              </span>
-            </div>
+          <div className="company__header max-w-4xl mb-14 sm:mb-16 md:mb-20">
+            <p className="text-sm text-black/50 mb-4">{company.name} · Founded {company.founded}</p>
+            <h2 className="company__name text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight">
+              Practical systems for small businesses
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-black/70 leading-relaxed font-light max-w-3xl">
+              {company.description} We design the workflow, connect the tools, and build custom AI agents that work alongside the team.
+            </p>
+          </div>
 
-            {/* Company Name & Year */}
-            <div className="company__header mb-10 sm:mb-12">
-              <h2 className="company__name text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 sm:mb-5 md:mb-6 leading-tight">
-                {company.name}
-              </h2>
-              <p className="company__founded text-base sm:text-lg text-black/50">
-                Founded {company.founded}
+          <div className="grid gap-8 border-y border-black/10 py-8 sm:grid-cols-3 sm:gap-10 sm:py-10">
+            <div>
+              <h3 className="text-lg sm:text-xl font-semibold text-black mb-3">Workflow systems</h3>
+              <p className="text-sm sm:text-base leading-relaxed text-black/65">
+                Turn repeated manual work into a clear process with owners, handoffs, and visible next steps.
               </p>
             </div>
-
-            {/* Description */}
-            <div className="company__description mb-12 sm:mb-14 md:mb-16">
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-black/70 leading-relaxed font-light">
-                {company.description}
+            <div>
+              <h3 className="text-lg sm:text-xl font-semibold text-black mb-3">Custom AI agents</h3>
+              <p className="text-sm sm:text-base leading-relaxed text-black/65">
+                Agents prepare lists, draft replies, summarize information, and surface the next action while your team stays in control.
               </p>
             </div>
-
-            {/* Philosophy */}
-            <div className="company__philosophy space-y-6 sm:space-y-7 md:space-y-8 mb-12 sm:mb-14 md:mb-16">
-              <div className="company__philosophy-item">
-                <div className="text-xs uppercase tracking-wider text-black/40 mb-2 font-medium">
-                  Vision
-                </div>
-                <p className="text-sm sm:text-base md:text-lg text-black/80">
-                  {company.philosophy.vision}
-                </p>
-              </div>
-              <div className="company__philosophy-item">
-                <div className="text-xs uppercase tracking-wider text-black/40 mb-2 font-medium">
-                  Mission
-                </div>
-                <p className="text-sm sm:text-base md:text-lg text-black/80">
-                  {company.philosophy.mission}
-                </p>
-              </div>
-              <div className="company__philosophy-item">
-                <div className="text-xs uppercase tracking-wider text-black/40 mb-2 font-medium">
-                  Approach
-                </div>
-                <p className="text-sm sm:text-base md:text-lg text-black/80">
-                  {company.philosophy.approach}
-                </p>
-              </div>
-            </div>
-
-            {/* Link */}
-            <div className="company__link">
-              <Link
-                href={company.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-black/60 hover:text-black transition-colors text-sm sm:text-base"
-              >
-                <span>Visit {company.name}</span>
-                <FaExternalLinkAlt className="w-3 h-3" />
-              </Link>
+            <div>
+              <h3 className="text-lg sm:text-xl font-semibold text-black mb-3">Operational tools</h3>
+              <p className="text-sm sm:text-base leading-relaxed text-black/65">
+                Simple dashboards, forms, check-in systems, and internal products built around how the business actually operates.
+              </p>
             </div>
           </div>
+
+          <div className="mt-14 sm:mt-16 md:mt-20 grid gap-8 sm:grid-cols-3 sm:gap-10">
+            <div>
+              <h3 className="text-sm uppercase tracking-wider text-black/45 mb-3 font-medium">Find the leak</h3>
+              <p className="text-sm sm:text-base leading-relaxed text-black/70">Map where leads, follow-ups, payments, or customer activity are being lost.</p>
+            </div>
+            <div>
+              <h3 className="text-sm uppercase tracking-wider text-black/45 mb-3 font-medium">Build the smallest useful system</h3>
+              <p className="text-sm sm:text-base leading-relaxed text-black/70">Improve one important workflow before adding more complexity.</p>
+            </div>
+            <div>
+              <h3 className="text-sm uppercase tracking-wider text-black/45 mb-3 font-medium">Train and improve</h3>
+              <p className="text-sm sm:text-base leading-relaxed text-black/70">Make sure the people using the system can operate it, review it, and improve it over time.</p>
+            </div>
+          </div>
+
+          <div className="mt-14 sm:mt-16">
+            <Link
+              href="mailto:olufemiaf@gmail.com?subject=Talk about a workflow"
+              className="inline-flex items-center gap-2 text-black hover:text-black/60 transition-colors text-sm sm:text-base font-medium"
+            >
+              <span>Talk about a workflow</span>
+              <FaExternalLinkAlt className="w-3 h-3" />
+            </Link>
+          </div>
+
         </div>
       </section>
     </>
