@@ -9,10 +9,10 @@ const courierPrime = Courier_Prime({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://olufemiaf.info"),
-  title: "Olufemi Afolabi - Portfolio",
+  title: "Femi Afolabi - Portfolio",
   description: "Software Engineer & Solutions Architect Portfolio",
   openGraph: {
-    title: "Olufemi Afolabi",
+    title: "Femi Afolabi",
     description: "Software Engineer & Solutions Architect Portfolio",
     url: "https://olufemiaf.info",
     images: [
